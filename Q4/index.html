@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laravel Model Lifecycle</title>
+</head>
+<body>
+
+<h2>Laravel Model Lifecycle</h2>
+
+<?php
+// Simulated Laravel Eloquent model class
+class MyModel {
+    protected $saved = false;
+
+    // Simulated save method
+    public function save() {
+        // Save logic goes here
+        $this->saved = true;
+        echo "<p>Model saved to database.</p>";
+    }
+
+    // Simulated afterCommit method
+    public function afterCommit() {
+        // Logic to run after database commit
+        echo "<p>Actions after database commit.</p>";
+    }
+
+    // Simulated accessor method for saved property
+    public function saved() {
+        return $this->saved;
+    }
+}
+
+// Creating a new instance of MyModel
+$model = new MyModel();
+
+// Saving the model to the database
+$model->save();
+
+// Checking if the model is saved
+if ($model->saved()) {
+    echo "<p>Model is saved.</p>";
+}
+
+// Simulating a database transaction commit
+echo "<p>Database transaction committed.</p>";
+
+// Running afterCommit actions
+$model->afterCommit();
+?>
+
+In this example, we have a simulated Laravel Eloquent model class called MyModel. We have methods to save the model to the database, check if it's saved, and perform actions afterCommit.
+
+The PHP code within the HTML demonstrates the lifecycle of the model:
+
+The model is saved to the database, and a message is displayed indicating that it's saved.
+We check if the model is saved using the saved method and display a message accordingly.
+We simulate a database transaction commit.
+After the commit, we run afterCommit actions, and a message is displayed indicating that actions are performed after the commit.
+This example provides a basic illustration of the concept of "saved" vs. "afterCommit" in the context of Laravel model lifecycle.
+
+</body>
+</html>
